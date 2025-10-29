@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">ADMIN PANEL</div>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">View Site</a>
+            <a href="#" class="nav-link" id="logout-link">Logout</a>
+        </div>
+    </nav>
+
+    <div class="admin-dashboard">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">Dashboard</h1>
+        </div>
+
+        <div id="alert-container"></div>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <h2 class="upload-title">Upload New Project</h2>
+            <form id="upload-form">
+                <div class="form-group">
+                    <label for="project-title" class="form-label">Project Title</label>
+                    <input type="text" id="project-title" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="project-description" class="form-label">Description</label>
+                    <input type="text" id="project-description" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Images</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="project-images" accept="image/*" multiple>
+                        <label for="project-images" class="file-input-label">
+                            Choose Images
+                        </label>
+                    </div>
+                    <p style="margin-top: 0.5rem; color: var(--accent-color); font-size: 0.85rem;">
+                        Select multiple images for this project
+                    </p>
+                </div>
+
+                <div class="image-preview" id="image-preview"></div>
+
+                <button type="submit" class="admin-button" id="upload-button">
+                    Create Project
+                </button>
+            </form>
+        </section>
+
+        <!-- Existing Projects -->
+        <section>
+            <h2 class="upload-title">Existing Projects</h2>
+            <div class="projects-grid" id="existing-projects"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

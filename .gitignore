@@ -1,0 +1,22 @@
+# Uploaded images
+uploads/*
+!uploads/.gitkeep
+
+# Data files
+data/*
+!data/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.log

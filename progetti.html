@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progetti - Portfolio Fotografico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-logo">PHOTOGRAPHER</div>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="progetti.html" class="nav-link">Progetti</a>
+            <a href="index.html#about" class="nav-link">About</a>
+            <a href="index.html#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title fade-in">Projects</h1>
+        <p class="page-subtitle fade-in">Visual Stories</p>
+    </div>
+
+    <!-- Projects Grid -->
+    <section class="projects-section" id="projects-list">
+        <div class="projects-grid"></div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightbox-img">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+            <div class="lightbox-counter" id="lightbox-counter"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Photographer Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="progetti.js"></script>
+</body>
+</html>

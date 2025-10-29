@@ -8,10 +8,11 @@
 :root {
     --primary-color: #000;
     --secondary-color: #fff;
-    --accent-color: #333;
+    --accent-color: #666;
     --text-color: #1a1a1a;
-    --light-gray: #f5f5f5;
+    --light-gray: #fafafa;
     --transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --fast-transition: all 0.3s ease;
 }
 
 html {
@@ -473,5 +474,499 @@ body {
     .about,
     .contact {
         padding: 5rem 5%;
+    }
+}
+
+/* Page Header */
+.page-header {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px;
+    background-color: var(--light-gray);
+}
+
+.page-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 200;
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.page-subtitle {
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+/* Projects Section */
+.projects-section {
+    padding: 5rem 5%;
+    background-color: var(--secondary-color);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.project-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: var(--transition);
+}
+
+.project-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-thumbnail {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: var(--light-gray);
+}
+
+.project-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+    filter: grayscale(30%);
+}
+
+.project-thumbnail:hover img {
+    transform: scale(1.03);
+    filter: grayscale(0%);
+}
+
+.project-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+    opacity: 0;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-thumbnail:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-title {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--secondary-color);
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.project-description {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.project-count {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.98);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-caption {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-top: 2rem;
+    text-transform: uppercase;
+}
+
+.lightbox-counter {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-top: 0.5rem;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 10001;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--fast-transition);
+    line-height: 1;
+}
+
+.lightbox-close:hover {
+    transform: rotate(90deg);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--secondary-color);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--fast-transition);
+    backdrop-filter: blur(10px);
+    z-index: 10001;
+}
+
+.lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-prev {
+    left: 2rem;
+}
+
+.lightbox-next {
+    right: 2rem;
+}
+
+/* Admin Page Styles */
+.admin-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--light-gray) 0%, var(--secondary-color) 100%);
+    padding: 2rem;
+}
+
+.admin-box {
+    background: var(--secondary-color);
+    padding: 3rem;
+    border: 1px solid #e0e0e0;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.admin-title {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+.form-input {
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    background-color: var(--light-gray);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: var(--fast-transition);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: var(--secondary-color);
+}
+
+.admin-button {
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+    margin-top: 1rem;
+}
+
+.admin-button:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.admin-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid;
+    text-align: center;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.alert-error {
+    background-color: #fee;
+    border-color: #fcc;
+    color: #c33;
+}
+
+.alert-success {
+    background-color: #efe;
+    border-color: #cfc;
+    color: #3c3;
+}
+
+/* Admin Dashboard */
+.admin-dashboard {
+    padding: 100px 5% 5rem;
+    min-height: 100vh;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dashboard-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.logout-button {
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--fast-transition);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.logout-button:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.upload-section {
+    background-color: var(--light-gray);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border: 2px dashed #ddd;
+    transition: var(--fast-transition);
+}
+
+.upload-section:hover {
+    border-color: var(--accent-color);
+}
+
+.upload-title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.file-input-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.file-input-wrapper input[type=file] {
+    position: absolute;
+    left: -9999px;
+}
+
+.file-input-label {
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.file-input-label:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.image-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.preview-item {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background-color: var(--light-gray);
+}
+
+.preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.preview-remove {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--fast-transition);
+}
+
+.preview-remove:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+/* Responsive for Projects */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .lightbox-nav {
+        width: 50px;
+        height: 50px;
+    }
+
+    .lightbox-prev {
+        left: 1rem;
+    }
+
+    .lightbox-next {
+        right: 1rem;
+    }
+
+    .lightbox-close {
+        top: 1rem;
+        right: 1rem;
+        font-size: 2.5rem;
+    }
+
+    .page-header {
+        min-height: 40vh;
     }
 }
