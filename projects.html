@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progetti - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-logo">N</div>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="projects.html" class="nav-link active">Progetti</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        <a href="admin.html" class="admin-link">Admin</a>
+    </nav>
+
+    <!-- Projects Header -->
+    <section class="page-header">
+        <h1>Progetti</h1>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects-section">
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Project 1 -->
+            <div class="project-card" data-project="1">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=1200&fit=crop" alt="Progetto 1" loading="lazy">
+            </div>
+            <!-- Project 2 -->
+            <div class="project-card" data-project="2">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=1200&fit=crop" alt="Progetto 2" loading="lazy">
+            </div>
+            <!-- Project 3 -->
+            <div class="project-card" data-project="3">
+                <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&h=1200&fit=crop" alt="Progetto 3" loading="lazy">
+            </div>
+            <!-- Project 4 -->
+            <div class="project-card" data-project="4">
+                <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&h=1200&fit=crop" alt="Progetto 4" loading="lazy">
+            </div>
+            <!-- Project 5 -->
+            <div class="project-card" data-project="5">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=1200&fit=crop" alt="Progetto 5" loading="lazy">
+            </div>
+            <!-- Project 6 -->
+            <div class="project-card" data-project="6">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=1200&fit=crop" alt="Progetto 6" loading="lazy">
+            </div>
+            <!-- Project 7 -->
+            <div class="project-card" data-project="7">
+                <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800&h=1200&fit=crop" alt="Progetto 7" loading="lazy">
+            </div>
+            <!-- Project 8 -->
+            <div class="project-card" data-project="8">
+                <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=1200&fit=crop" alt="Progetto 8" loading="lazy">
+            </div>
+            <!-- Project 9 -->
+            <div class="project-card" data-project="9">
+                <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=1200&fit=crop" alt="Progetto 9" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Fullscreen Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="closeLightbox">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="prevImage">‹</button>
+        <button class="lightbox-nav lightbox-next" id="nextImage">›</button>
+        <div class="lightbox-content">
+            <img src="" alt="Immagine progetto" id="lightboxImage">
+        </div>
+        <div class="lightbox-counter" id="lightboxCounter">1 / 9</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-minimal">
+        <p>© 2024</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="lightbox.js"></script>
+</body>
+</html>
